@@ -2,10 +2,10 @@
 class Character {
   final int id;
   final String name;
-  final String status;
+  final Status status;
   final String species;
   final String type;
-  final String gender;
+  final Gender gender;
   final OriginCharacter origin;
   final LocationCharacterEntity location;
   final String image;
@@ -48,5 +48,6 @@ class OriginCharacter {
 
 /// Types of gender
 enum Gender { female, male, genderless, unknown }
+
 /// Types of status
 enum Status { alive, dead, unknown }
