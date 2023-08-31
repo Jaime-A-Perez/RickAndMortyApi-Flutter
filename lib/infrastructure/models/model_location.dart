@@ -8,7 +8,7 @@ String modelEpisodeToJson(ModelEpisode data) => json.encode(data.toJson());
 
 class ModelEpisode {
   final Info? info;
-  final List<Result>? results;
+  final List<ResultLocation>? results;
 
   ModelEpisode({
     this.info,
@@ -19,8 +19,8 @@ class ModelEpisode {
         info: json["info"] == null ? null : Info.fromJson(json["info"]),
         results: json["results"] == null
             ? []
-            : List<Result>.from(
-                json["results"]!.map((x) => Result.fromJson(x))),
+            : List<ResultLocation>.from(
+                json["results"]!.map((x) => ResultLocation.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -31,7 +31,7 @@ class ModelEpisode {
       };
 }
 
-class Result {
+class ResultLocation {
   final int? id;
   final String? name;
   final String? airDate;
@@ -40,7 +40,7 @@ class Result {
   final String? url;
   final String? created;
 
-  Result({
+  ResultLocation({
     this.id,
     this.name,
     this.airDate,
@@ -50,7 +50,7 @@ class Result {
     this.created,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory ResultLocation.fromJson(Map<String, dynamic> json) => ResultLocation(
         id: json["id"],
         name: json["name"],
         airDate: json["air_date"],

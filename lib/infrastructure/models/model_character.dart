@@ -9,7 +9,7 @@ String modelCharacterToJson(ModelCharacter data) => json.encode(data.toJson());
 
 class ModelCharacter {
   final Info? info;
-  final List<Result>? results;
+  final List<ResultCharacter>? results;
 
   ModelCharacter({
     this.info,
@@ -20,8 +20,8 @@ class ModelCharacter {
         info: json["info"] == null ? null : Info.fromJson(json["info"]),
         results: json["results"] == null
             ? []
-            : List<Result>.from(
-                json["results"]!.map((x) => Result.fromJson(x))),
+            : List<ResultCharacter>.from(
+                json["results"]!.map((x) => ResultCharacter.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -32,7 +32,7 @@ class ModelCharacter {
       };
 }
 
-class Result {
+class ResultCharacter {
   final int? id;
   final String? name;
   final String? status;
@@ -46,7 +46,7 @@ class Result {
   final String? url;
   final String? created;
 
-  Result({
+  ResultCharacter({
     this.id,
     this.name,
     this.status,
@@ -61,7 +61,7 @@ class Result {
     this.created,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory ResultCharacter.fromJson(Map<String, dynamic> json) => ResultCharacter(
         id: json["id"],
         name: json["name"],
         status: json["status"],
