@@ -7,7 +7,7 @@ class Character {
   final String type;
   final String gender;
   final OriginCharacter origin;
-  final LocationCharacter location;
+  final LocationCharacterEntity location;
   final String image;
   final List<String> episode;
   final String url;
@@ -29,12 +29,12 @@ class Character {
 }
 
 /// Name and link to the character's last known location endpoint.
-class LocationCharacter {
+class LocationCharacterEntity {
   
   final String name;
   final String url;
 
-  LocationCharacter({required this.name, required this.url});
+  LocationCharacterEntity({required this.name, required this.url});
 }
 
 /// Name and link to the character's origin location.
@@ -45,3 +45,8 @@ class OriginCharacter {
 
   OriginCharacter({required this.name, required this.url});
 }
+
+/// Types of gender
+enum Gender { female, male, genderless, unknown }
+/// Types of status
+enum Status { alive, dead, unknown }
