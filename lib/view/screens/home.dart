@@ -4,6 +4,7 @@ import 'package:rick_and_morty/blocs/bloc_characters/characters_bloc.dart';
 import 'package:rick_and_morty/infrastructure/datasource_imp/datasource_imp_rick_and_morty.dart';
 import 'package:rick_and_morty/infrastructure/models/model_character.dart';
 import 'package:rick_and_morty/view/screens/characters_page.dart';
+import 'package:rick_and_morty/view/screens/episodes_screen.dart';
 import 'package:rick_and_morty/view/screens/locations_page.dart';
 import 'package:rick_and_morty/view/widgets/image_error.dart';
 
@@ -19,7 +20,8 @@ class Home extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Material App Bar'),
         ),
-        body: LocationsPage()
+        body: EpisodesPage()
+        // body: LocationsPage()
         // body: CharacterPage()
         //  blocCharacter.state.characterList == null ? 
         // Center(child: ImageError()) :

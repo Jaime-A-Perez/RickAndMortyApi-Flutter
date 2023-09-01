@@ -34,7 +34,7 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
          case "location":
          final ModelLocation model = modelLocationFromJson(response.body);
          return model;
-         case "episodes":
+         case "episode":
          final ModelEpisode model = modelEpisodeFromJson(response.body);
          return model;
       }  
