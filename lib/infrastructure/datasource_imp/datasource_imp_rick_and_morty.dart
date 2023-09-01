@@ -1,16 +1,17 @@
 import 'package:rick_and_morty/domine/datasources/datasource_rick_and_morty.dart';
 import 'package:rick_and_morty/domine/entities/character.dart';
 import 'package:rick_and_morty/domine/entities/epidode.dart';
+import 'package:rick_and_morty/infrastructure/mapper/mapperCharacter.dart';
 import 'package:rick_and_morty/infrastructure/models/model_character.dart';
 import 'package:http/http.dart' as http;
 
 class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
 
-  Future<ModelCharacter> _response(Map<String,String> queryParameter) async {
+  Future<dynamic> response( String typeRequest, Map<String,String> queryParameter) async {
     final Uri uri = Uri(
       scheme: 'https',
       host: 'rickandmortyapi.com',
-      path: '/api',
+      path: '/api/$typeRequest',
       queryParameters: queryParameter 
     );
 
@@ -24,9 +25,13 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
   }
 
   @override
-  Future<List<Character>> getCharacter(int page) {
-    // TODO: implement getCharacter
-    throw UnimplementedError();
+  Future<List<Character>> getCharacter(int page) async{
+    // _response("character",{"a":"a"}) ;
+    final ModelCharacter dataCharacter = await DataSourceImpRickAndMorty().response("character", {"queryParameter": "$page"}) as ModelCharacter;
+    
+    final List<Character> characters = dataCharacter.results!.map((ResultCharacter e) => MapperCharacter.characterModleToCharacterEntity(e)).toList();
+
+    return characters;
   }
 
   @override
@@ -36,7 +41,7 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
   }
 
   @override
-  Future<List<Location>> getLocation(int page) {
+  Future<List<LocationCharacter>> getLocation(int page) {
     // TODO: implement getLocation
     throw UnimplementedError();
   }
