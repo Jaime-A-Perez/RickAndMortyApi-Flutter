@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/blocs/bloc_location/location_bloc.dart';
+import 'package:rick_and_morty/view/screens/detail_location.dart';
 import 'package:rick_and_morty/view/widgets/card_location.dart';
 
 class LocationsPage extends StatelessWidget {
@@ -33,7 +34,7 @@ class LocationsPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  Center()));
+                                  DetailLocation(location: blocLocation.state.locationsList![index],)));
                     },
                   );
                 }),
