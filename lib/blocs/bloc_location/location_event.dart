@@ -13,3 +13,9 @@ class AddNewItems extends LocationEvent {
 class SearchEvent extends LocationEvent {
   
 }
+
+class AddResidents extends LocationEvent {
+  final List<int> listResidents;
+
+  AddResidents(this.listResidents);
+}

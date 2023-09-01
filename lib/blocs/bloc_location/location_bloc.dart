@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:rick_and_morty/domine/entities/character.dart';
 import 'package:rick_and_morty/domine/entities/location.dart';
 import 'package:rick_and_morty/infrastructure/datasource_imp/datasource_imp_rick_and_morty.dart';
 
@@ -12,6 +13,11 @@ class LocationBloc extends Bloc<LocationEvent, LocationsState> {
     on<InitLocationBloc>((event, emit) async{
       final List<Location> locations = await DataSourceImpRickAndMorty().getLocation(1);
       emit(state.copywith(locationsList: locations));
+    });
+
+    on<AddResidents>((event, emit) async{
+      final List<Character> residents = await DataSourceImpRickAndMorty().getResidents(event.listResidents);
+      emit(state.copywith(residents: residents));
     });
   }
 }
