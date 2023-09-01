@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty/blocs/bloc_bottom_bar/bottom_bar_bloc.dart';
 import 'package:rick_and_morty/blocs/bloc_characters/characters_bloc.dart';
 import 'package:rick_and_morty/blocs/bloc_episodes/episodes_bloc.dart';
 import 'package:rick_and_morty/blocs/bloc_location/location_bloc.dart';
@@ -22,8 +23,8 @@ class MyApp extends StatelessWidget {
         lazy: false,
         ),
         BlocProvider(create: (BuildContext context) => EpisodesBloc()..add(InitEpisodesBloc()),
-        lazy: false,
-        )
+        lazy: false),
+        BlocProvider(create: (BuildContext context) => BottomBarBloc()),        
       ],
       child: MaterialApp(
           theme: AppTheme().getTheme(),
