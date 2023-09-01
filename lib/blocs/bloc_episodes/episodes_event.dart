@@ -13,3 +13,9 @@ class AddNewItems extends EpisodesEvent {
 class SearchEvent extends EpisodesEvent {
   
 }
+
+class AddCharacterOfEpisodeEvent extends EpisodesEvent {
+  final List<String> listCharactersOfEpisode;
+
+  AddCharacterOfEpisodeEvent(this.listCharactersOfEpisode);
+}
