@@ -1,4 +1,15 @@
 part of 'episodes_bloc.dart';
 
 @immutable
-sealed class EpisodesEvent {}
+abstract class EpisodesEvent {}
+class InitCharacterBloc extends EpisodesEvent {
+  InitCharacterBloc();
+}
+
+class AddNewItems extends EpisodesEvent {
+  AddNewItems();
+}
+
+class SearchEvent extends EpisodesEvent {
+  
+}
