@@ -2,12 +2,12 @@ part of 'episodes_bloc.dart';
 
 
 class EpisodesState {
-  final List<Episode>? characterList;
+  final List<Episode>? episodesList;
   final Episode? searchResult;
   final String? queryParameters;
   final bool? isActiveSearch;
-
-  EpisodesState({this.characterList, this.searchResult, this.queryParameters, this.isActiveSearch});
+ 
+  EpisodesState({this.episodesList, this.searchResult, this.queryParameters, this.isActiveSearch});
 
   EpisodesState copywith({
     List<Episode>? characterList,
@@ -15,7 +15,7 @@ class EpisodesState {
     String? queryParameters,
     bool? isActiveSearch,
   }) => EpisodesState(
-    characterList: characterList ?? this.characterList,
+    episodesList: characterList ?? this.episodesList,
     searchResult: searchResult,
     queryParameters: queryParameters ?? this.queryParameters,
     isActiveSearch:  isActiveSearch ?? this.isActiveSearch) ;
