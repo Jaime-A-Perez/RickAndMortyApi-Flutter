@@ -19,8 +19,7 @@ class CharactersState extends Equatable{
     queryParameters: queryParameters ?? this.queryParameters,
     isActiveSearch:  isActiveSearch ?? this.isActiveSearch) ;
     
-      @override
-      List<Object?> get props => [characterList, searchResult, queryParameters, isActiveSearch];
-  
+  @override
+  List<Object?> get props => [characterList, searchResult, queryParameters, isActiveSearch];  
 }
 

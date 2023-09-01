@@ -1,6 +1,6 @@
 part of 'bottom_bar_bloc.dart';
 
-class BottomBarState extends Equatable {
+class BottomBarState extends Equatable{
   final int pageIndex;
 
   const BottomBarState({this.pageIndex = 0});
