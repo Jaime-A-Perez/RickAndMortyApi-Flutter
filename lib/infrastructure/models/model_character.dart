@@ -39,8 +39,8 @@ class ResultCharacter {
   final String? species;
   final String? type;
   final String? gender;
-  final Location? origin;
-  final Location? location;
+  final LocationCharacter? origin;
+  final LocationCharacter? location;
   final String? image;
   final List<String>? episode;
   final String? url;
@@ -69,10 +69,10 @@ class ResultCharacter {
         type: json["type"],
         gender: json["gender"],
         origin:
-            json["origin"] == null ? null : Location.fromJson(json["origin"]),
+            json["origin"] == null ? null : LocationCharacter.fromJson(json["origin"]),
         location: json["location"] == null
             ? null
-            : Location.fromJson(json["location"]),
+            : LocationCharacter.fromJson(json["location"]),
         image: json["image"],
         episode: json["episode"] == null
             ? []
@@ -98,16 +98,16 @@ class ResultCharacter {
       };
 }
 
-class Location {
+class LocationCharacter {
   final String? name;
   final String? url;
 
-  Location({
+  LocationCharacter({
     this.name,
     this.url,
   });
 
-  factory Location.fromJson(Map<String, dynamic> json) => Location(
+  factory LocationCharacter.fromJson(Map<String, dynamic> json) => LocationCharacter(
         name: json["name"],
         url: json["url"],
       );
