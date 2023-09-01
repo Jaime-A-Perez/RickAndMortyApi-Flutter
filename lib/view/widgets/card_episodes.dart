@@ -20,7 +20,7 @@ class CardEpisode extends StatelessWidget {
             color: theme.cardColor,
             boxShadow: const [
               BoxShadow(
-                  color: Colors.black12,
+                  color: Color.fromARGB(191, 12, 255, 49),
                   blurRadius: 4,
                   spreadRadius: 1,
                   offset: Offset(0.0, 4.0)
