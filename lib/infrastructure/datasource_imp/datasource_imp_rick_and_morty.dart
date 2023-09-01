@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
 
-  Future<dynamic> response( String typeRequest, Map<String,String> queryParameter) async {
+  Future<dynamic> _response( String typeRequest, Map<String,String> queryParameter) async {
     final Uri uri = Uri(
       scheme: 'https',
       host: 'rickandmortyapi.com',
@@ -26,11 +26,11 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
 
   @override
   Future<List<Character>> getCharacter(int page) async{
-    // _response("character",{"a":"a"}) ;
-    final ModelCharacter dataCharacter = await DataSourceImpRickAndMorty().response("character", {"queryParameter": "$page"}) as ModelCharacter;
-    
+    // Query and data modeling
+    final ModelCharacter dataCharacter = await DataSourceImpRickAndMorty()._response("character", {"queryParameter": "$page"}) as ModelCharacter;
+    // Mapping of the result to the entity
     final List<Character> characters = dataCharacter.results!.map((ResultCharacter e) => MapperCharacter.characterModleToCharacterEntity(e)).toList();
-
+    // retunr list of entities Characters
     return characters;
   }
 
