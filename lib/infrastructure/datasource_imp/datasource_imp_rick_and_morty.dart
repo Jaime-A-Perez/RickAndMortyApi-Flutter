@@ -2,9 +2,11 @@ import 'package:rick_and_morty/domine/datasources/datasource_rick_and_morty.dart
 import 'package:rick_and_morty/domine/entities/character.dart';
 import 'package:rick_and_morty/domine/entities/epidode.dart';
 import 'package:rick_and_morty/infrastructure/mapper/mapper_character.dart';
+import 'package:rick_and_morty/infrastructure/mapper/mapper_episode.dart';
 import 'package:rick_and_morty/infrastructure/mapper/mapper_location.dart';
 import 'package:rick_and_morty/infrastructure/models/model_character.dart';
 import 'package:http/http.dart' as http;
+import 'package:rick_and_morty/infrastructure/models/model_episode.dart';
 import 'package:rick_and_morty/infrastructure/models/model_location.dart';
 
 import '../../domine/entities/location.dart';
@@ -39,9 +41,12 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
   }
 
   @override
-  Future<List<Episode>> getEpisode(int page) {
-    // TODO: implement getEpisode
-    throw UnimplementedError();
+  Future<List<Episode>> getEpisode(int page) async{
+    final ModelEpisode dataEpisode = await    DataSourceImpRickAndMorty()._response("episode", {"queryParameter": "$page"});
+
+    final List<Episode> episodes = dataEpisode.results!.map((ResultEpisode e) => MapperEpisode.episodeModelToEpisodeEntity(e)).toList();
+
+    return episodes; 
   }
 
   @override
