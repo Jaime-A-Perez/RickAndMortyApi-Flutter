@@ -1,6 +1,6 @@
 part of 'characters_bloc.dart';
 
-class CharactersState {
+class CharactersState extends Equatable{
   final List<Character>? characterList;
   final Character? searchResult;
   final String? queryParameters;
@@ -18,6 +18,9 @@ class CharactersState {
     searchResult: searchResult,
     queryParameters: queryParameters ?? this.queryParameters,
     isActiveSearch:  isActiveSearch ?? this.isActiveSearch) ;
+    
+      @override
+      List<Object?> get props => [characterList, searchResult, queryParameters, isActiveSearch];
   
 }
 
