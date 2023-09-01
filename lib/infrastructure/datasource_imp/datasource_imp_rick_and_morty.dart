@@ -38,11 +38,10 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
          final ModelEpisode model = modelEpisodeFromJson(response.body);
          return model;
          default:
-         final ModelCharacter model = modelCharacterFromJson(response.body);
+         final String preResponse = '{"results": ${response.body}}';
+         final ModelCharacter model = modelCharacterFromJson(preResponse);
          return model;
       }  
-    // final ModelCharacter modelCharacter = modelCharacterFromJson(response.body);
-    // return modelCharacter;
   }
 
   @override
@@ -75,11 +74,10 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
 
   @override
   Future<List<Character>> getResidents(List<int> idCharacters) async{
-    // Query and data modeling
     final ModelCharacter dataCharacter = await DataSourceImpRickAndMorty()._response("character/$idCharacters", {"":""}) as ModelCharacter;
-    // Mapping of the result to the entity
-    final List<Character> characters = dataCharacter.results!.map((ResultCharacter e) => MapperCharacter.characterModelToCharacterEntity(e)).toList();
-    // retunr list of entities Characters
+
+    final List<Character> characters = dataCharacter.results!.map((ResultCharacter e) => MapperCharacter.characterModelToCharacterEntity(e)).toList();    
+    
     return characters;
   }
 }
