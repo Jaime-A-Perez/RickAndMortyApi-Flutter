@@ -1,21 +1,23 @@
 import 'dart:convert';
+
 import 'package:rick_and_morty/infrastructure/models/model_info.dart';
 
-ModelEpisode modelEpisodeFromJson(String str) =>
-    ModelEpisode.fromJson(json.decode(str));
 
-String modelEpisodeToJson(ModelEpisode data) => json.encode(data.toJson());
+ModelLocation modelLocationFromJson(String str) =>
+    ModelLocation.fromJson(json.decode(str));
 
-class ModelEpisode {
+String modelLocationToJson(ModelLocation data) => json.encode(data.toJson());
+
+class ModelLocation {
   final Info? info;
   final List<ResultLocation>? results;
 
-  ModelEpisode({
+  ModelLocation({
     this.info,
     this.results,
   });
 
-  factory ModelEpisode.fromJson(Map<String, dynamic> json) => ModelEpisode(
+  factory ModelLocation.fromJson(Map<String, dynamic> json) => ModelLocation(
         info: json["info"] == null ? null : Info.fromJson(json["info"]),
         results: json["results"] == null
             ? []
@@ -34,18 +36,18 @@ class ModelEpisode {
 class ResultLocation {
   final int? id;
   final String? name;
-  final String? airDate;
-  final String? episode;
-  final List<String>? characters;
+  final String? type;
+  final String? dimension;
+  final List<String>? residents;
   final String? url;
   final String? created;
 
   ResultLocation({
     this.id,
     this.name,
-    this.airDate,
-    this.episode,
-    this.characters,
+    this.type,
+    this.dimension,
+    this.residents,
     this.url,
     this.created,
   });
@@ -53,11 +55,11 @@ class ResultLocation {
   factory ResultLocation.fromJson(Map<String, dynamic> json) => ResultLocation(
         id: json["id"],
         name: json["name"],
-        airDate: json["air_date"],
-        episode: json["episode"],
-        characters: json["characters"] == null
+        type: json["type"],
+        dimension: json["dimension"],
+        residents: json["residents"] == null
             ? []
-            : List<String>.from(json["characters"]!.map((x) => x)),
+            : List<String>.from(json["residents"]!.map((x) => x)),
         url: json["url"],
         created: json["created"],
       );
@@ -65,11 +67,11 @@ class ResultLocation {
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
-        "air_date": airDate,
-        "episode": episode,
-        "characters": characters == null
+        "type": type,
+        "dimension": dimension,
+        "residents": residents == null
             ? []
-            : List<dynamic>.from(characters!.map((x) => x)),
+            : List<dynamic>.from(residents!.map((x) => x)),
         "url": url,
         "created": created,
       };

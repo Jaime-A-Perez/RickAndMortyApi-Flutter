@@ -1,9 +1,11 @@
 import 'package:rick_and_morty/domine/datasources/datasource_rick_and_morty.dart';
 import 'package:rick_and_morty/domine/entities/character.dart';
 import 'package:rick_and_morty/domine/entities/epidode.dart';
-import 'package:rick_and_morty/infrastructure/mapper/mapperCharacter.dart';
+import 'package:rick_and_morty/infrastructure/mapper/mapper_character.dart';
 import 'package:rick_and_morty/infrastructure/models/model_character.dart';
 import 'package:http/http.dart' as http;
+
+import '../../domine/entities/location.dart';
 
 class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
 
@@ -29,7 +31,7 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
     // Query and data modeling
     final ModelCharacter dataCharacter = await DataSourceImpRickAndMorty()._response("character", {"queryParameter": "$page"}) as ModelCharacter;
     // Mapping of the result to the entity
-    final List<Character> characters = dataCharacter.results!.map((ResultCharacter e) => MapperCharacter.characterModleToCharacterEntity(e)).toList();
+    final List<Character> characters = dataCharacter.results!.map((ResultCharacter e) => MapperCharacter.characterModelToCharacterEntity(e)).toList();
     // retunr list of entities Characters
     return characters;
   }
@@ -41,7 +43,7 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
   }
 
   @override
-  Future<List<LocationCharacter>> getLocation(int page) {
+  Future<List<Location>> getLocation(int page) {
     // TODO: implement getLocation
     throw UnimplementedError();
   }

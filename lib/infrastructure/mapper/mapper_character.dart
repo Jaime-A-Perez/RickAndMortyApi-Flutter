@@ -3,7 +3,7 @@ import 'package:rick_and_morty/domine/entities/character.dart';
 import 'package:rick_and_morty/infrastructure/models/model_character.dart';
 
 class MapperCharacter {
-  static Character characterModleToCharacterEntity( ResultCharacter resultCharacter ) {
+  static Character characterModelToCharacterEntity( ResultCharacter resultCharacter ) {
     return Character(
      id: resultCharacter.id ?? 999333,
      name: resultCharacter.name ?? "unknown",
