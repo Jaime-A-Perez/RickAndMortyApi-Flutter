@@ -10,7 +10,7 @@ class EpisodesState extends Equatable{
   const EpisodesState({this.episodesList, this.searchResult, this.queryParameters, this.isActiveSearch});
 
   EpisodesState copywith({
-    List<Episode>? characterList,
+    List<Episode>? episodesList,
     Episode? searchResult,
     String? queryParameters,
     bool? isActiveSearch,

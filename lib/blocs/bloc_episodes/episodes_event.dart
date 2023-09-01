@@ -2,8 +2,8 @@ part of 'episodes_bloc.dart';
 
 @immutable
 abstract class EpisodesEvent {}
-class InitCharacterBloc extends EpisodesEvent {
-  InitCharacterBloc();
+class InitEpisodesBloc extends EpisodesEvent {
+  InitEpisodesBloc();
 }
 
 class AddNewItems extends EpisodesEvent {
