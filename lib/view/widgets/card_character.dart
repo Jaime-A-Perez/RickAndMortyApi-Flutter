@@ -26,9 +26,12 @@ class CardCharacter extends StatelessWidget {
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(10),
                   topRight: Radius.circular(10)),
-              child: Image.network(
-                character.image,
-                width: width * 0.477,
+              child: Hero(
+                tag: character.name,
+                child: Image.network(
+                  character.image,
+                  width: width * 0.477,
+                ),
               ),
             ),
             Expanded(
