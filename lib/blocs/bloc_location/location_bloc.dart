@@ -9,7 +9,7 @@ part 'location_state.dart';
 
 class LocationBloc extends Bloc<LocationEvent, LocationsState> {
   LocationBloc() : super(LocationsState()) {
-    on<InitCharacterBloc>((event, emit) async{
+    on<InitLocationBloc>((event, emit) async{
       final List<Location> locations = await DataSourceImpRickAndMorty().getLocation(1);
       emit(state.copywith(locationsList: locations));
     });
