@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rick_and_morty/blocs/bloc_bottom_bar/bottom_bar_bloc.dart';
+import 'package:rick_and_morty/utils/utils.dart';
+
+class CustomBottomNavigationBar extends StatelessWidget {
+  final List<String> titles;
+  final List<Icon> icons;
+  
+  final List<Function> ontaps;
+  const CustomBottomNavigationBar(
+      {super.key,
+      required this.titles,
+      required this.icons,
+      required this.ontaps,
+      });
+
+  Widget build(BuildContext context) {
+    final width = screenSize(context, typeSize: TypeSize.width, size: 1);
+    final blocBottomBar = context.watch<BottomBarBloc>();
+    return BottomNavigationBar(
+        onTap: (value) {
+          ontaps[value].call();           
+        },
+        currentIndex: blocBottomBar.state.pageIndex,
+  
+        items: [
+          BottomNavigationBarItem(
+              label: titles[0],
+              activeIcon: icons[0],
+              icon: icons[0]),
+          BottomNavigationBarItem(
+            label: titles[1],
+            activeIcon: icons[1],
+            icon: icons[1],
+          ),
+          BottomNavigationBarItem(
+            label: titles[2],
+            activeIcon: icons[2],
+            icon: icons[2],
+          )
+        ]);
+  }
+}
