@@ -30,6 +30,8 @@ class LocationsPage extends StatelessWidget {
                   return CardLocation(
                     location: blocLocation.state.locationsList![index],
                     onTap: () {
+                      final blocResidents = context.read<LocationBloc>();
+                      blocResidents.add(AddResidents( blocLocation.state.locationsList![index].residents));
                       Navigator.push(
                           context,
                           MaterialPageRoute(
