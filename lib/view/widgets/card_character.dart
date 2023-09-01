@@ -3,16 +3,12 @@ import 'package:rick_and_morty/domine/entities/character.dart';
 import 'package:rick_and_morty/utils/utils.dart';
 
 class CardCharacter extends StatelessWidget {
-  final String name;
-  final String image;
-  final Status status;
+  final Character character;
   final void Function()? onTap;
 
   const CardCharacter(
       {Key? key,
-      required this.name,
-      required this.image,
-      required this.status,
+      required this.character,
       this.onTap})
       : super(key: key);
 
@@ -31,14 +27,14 @@ class CardCharacter extends StatelessWidget {
                   topLeft: Radius.circular(10),
                   topRight: Radius.circular(10)),
               child: Image.network(
-                image,
+                character.image,
                 width: width * 0.477,
               ),
             ),
             Expanded(
               child: Center(
                 child: Text(
-                  name,
+                  character.name,
                   style: textTheme.titleMedium,
                   textAlign: TextAlign.center,
                       maxLines: 1,
@@ -51,9 +47,9 @@ class CardCharacter extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    statusLive(status),
+                    statusLive(character.status),
                     Text(
-                      status.name.toUpperCase(),
+                      character.status.name.toUpperCase(),
                       style: textTheme.bodyMedium,                      
                     ),
                   ],
