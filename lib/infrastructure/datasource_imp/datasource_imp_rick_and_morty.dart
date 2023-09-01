@@ -25,9 +25,21 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
 
     if (response.statusCode < 200 || response.statusCode > 299) {
         throw Exception("Error code: ${response.statusCode}");
-      }    
-    final ModelCharacter modelCharacter = modelCharacterFromJson(response.body);
-    return modelCharacter;
+      }  
+
+      switch (typeRequest) {
+        case "character":
+         final ModelCharacter model = modelCharacterFromJson(response.body);
+         return model;
+         case "location":
+         final ModelLocation model = modelLocationFromJson(response.body);
+         return model;
+         case "episodes":
+         final ModelEpisode model = modelEpisodeFromJson(response.body);
+         return model;
+      }  
+    // final ModelCharacter modelCharacter = modelCharacterFromJson(response.body);
+    // return modelCharacter;
   }
 
   @override
