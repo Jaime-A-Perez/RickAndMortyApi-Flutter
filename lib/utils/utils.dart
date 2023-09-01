@@ -29,3 +29,19 @@ double screenSize(context, {required TypeSize typeSize, required double size}) {
 }
 
 enum TypeSize { height, width }
+
+//  Method to extract character identification.
+List<int> extractIdsFromUrls(List<String> urls) {
+  List<int> extractedIds = [];
+  // Regular expression to capture numbers at the end of the string.
+  RegExp exp = RegExp(r'(\d+)$'); 
+
+  for (String url in urls) {
+    var match = exp.firstMatch(url);
+    if (match != null) {
+      String idStr = match.group(1)!;
+      extractedIds.add(int.parse(idStr));
+    }
+  }
+  return extractedIds;
+}
