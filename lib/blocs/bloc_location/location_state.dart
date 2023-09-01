@@ -25,7 +25,7 @@ class LocationsState extends Equatable{
     residents: residents ?? this.residents);
     
       @override
-      List<Object?> get props => [locationsList, searchResult, queryParameters, isActiveSearch];
+      List<Object?> get props => [locationsList, searchResult, queryParameters, isActiveSearch, residents];
   
 }
 
