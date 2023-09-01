@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty/blocs/bloc_characters/characters_bloc.dart';
 import 'package:rick_and_morty/config/theme/app_theme.dart';
 import 'package:rick_and_morty/view/screens/home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,11 +11,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheme().getTheme(),
-      debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      home: Home()
+    return MultiBlocProvider(
+     providers: [
+        BlocProvider(create: (BuildContext context) => CharactersBloc()..add(InitCharacterBloc()),
+        lazy: false,
+        ),
+        BlocProvider(create: (BuildContext context) => CharactersBloc()..add(InitCharacterBloc())
+        ),
+        BlocProvider(create: (BuildContext context) => CharactersBloc()..add(InitCharacterBloc())
+        )
+      ],
+      child: MaterialApp(
+          theme: AppTheme().getTheme(),
+          debugShowCheckedModeBanner: false,
+          title: 'Material App',
+          home: Home()),
     );
   }
 }
