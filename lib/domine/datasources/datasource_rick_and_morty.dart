@@ -10,5 +10,6 @@ abstract class DataSourceRickAndMorty {
   
   Future<List<Location>> getLocation(int page);
 
+  Future<List<Character>> getResidents(List<int> idCharacters);
 
 }
