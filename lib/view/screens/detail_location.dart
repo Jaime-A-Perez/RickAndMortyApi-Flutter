@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/blocs/bloc_location/location_bloc.dart';
 import 'package:rick_and_morty/domine/entities/location.dart';
 import 'package:rick_and_morty/utils/utils.dart';
+import 'package:rick_and_morty/view/screens/detail_character_page.dart';
 import 'package:rick_and_morty/view/widgets/location_info.dart';
 
 class DetailLocation extends StatelessWidget {
@@ -56,23 +57,31 @@ class DetailLocation extends StatelessWidget {
                       crossAxisCount: 3,
                       mainAxisExtent: width * 0.4),
                   itemBuilder: (context, index) {
-                    return ClipRRect(
-                      // borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30) ),
-                      child: 
-                      Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(38),
-                            child: Image.network(
-                                state.residents![index].image),
-                          ),
-                          Text(
-                            state.residents![index].name,
-                            style: TextStyle(color: theme.disabledColor,),
-                            textAlign: TextAlign.center,
-                            maxLines: 2,
-                          ),
-                        ],
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => DetailCharacter(character: state.residents![index],)));
+                      },
+                      child: ClipRRect(
+                        // borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30) ),
+                        child: 
+                        Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(38),
+                              child: Image.network(
+                                  state.residents![index].image),
+                            ),
+                            Text(
+                              state.residents![index].name,
+                              style: TextStyle(color: theme.disabledColor,),
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
