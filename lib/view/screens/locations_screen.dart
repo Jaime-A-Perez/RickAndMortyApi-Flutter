@@ -71,7 +71,11 @@ class _LocationsSreenState extends State<LocationsSreen> {
             final blocLocationrRead = context.read<LocationBloc>();
             blocLocationrRead.add(AddNextPageOfLocationBloc(blocLocationrRead.state.currentPage! + 1));
             await Future.delayed(const Duration(milliseconds: 600),(){
-              scrollController.jumpTo(scrollController.position.pixels + 80);
+             scrollController.animateTo(
+                      scrollController.position.pixels + 100,
+                      duration: const Duration(milliseconds: 500), 
+                      curve: Curves.easeInOut, 
+                    );
             blocLocationrRead.add(IsRequeringData(false));
             });
           }):

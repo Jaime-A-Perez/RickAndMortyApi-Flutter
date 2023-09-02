@@ -73,7 +73,11 @@ class _EpisodesPageState extends State<EpisodesPage> {
             final blocLocationrRead = context.read<EpisodesBloc>();
             blocLocationrRead.add(AddNextPageOfEpisodesBloc(blocLocationrRead.state.currentPage! + 1));
             await Future.delayed(const Duration(milliseconds: 600),(){
-              scrollController.jumpTo(scrollController.position.pixels + 80);
+               scrollController.animateTo(
+                      scrollController.position.pixels + 100,
+                      duration: const Duration(milliseconds: 500), 
+                      curve: Curves.easeInOut, 
+                    );
             blocLocationrRead.add(IsRequeringData(false));
             });
           }):

@@ -67,7 +67,11 @@ class _CharacterScreenState extends State<CharacterScreen> {
                   final blocCharacterRead = context.read<CharactersBloc>();
                   blocCharacterRead.add(AddNextPageOfCharactersBloc(blocCharacterRead.state.currentPage! + 1));
                   await Future.delayed(const Duration(milliseconds: 600),(){
-                    scrollController.jumpTo(scrollController.position.pixels + 80);
+                    scrollController.animateTo(
+                      scrollController.position.pixels + 100,
+                      duration: const Duration(milliseconds: 500), 
+                      curve: Curves.easeInOut, 
+                    );
                   blocCharacterRead.add(IsRequeringData(false));
                   });
                 }):
