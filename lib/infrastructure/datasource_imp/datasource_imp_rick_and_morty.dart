@@ -56,7 +56,7 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
 
   @override
   Future<List<Episode>> getEpisode(int page) async{
-    final ModelEpisode dataEpisode = await    DataSourceImpRickAndMorty()._response("episode", {"queryParameter": "$page"});
+    final ModelEpisode dataEpisode = await    DataSourceImpRickAndMorty()._response("episode", {"page": "$page"});
 
     final List<Episode> episodes = dataEpisode.results!.map((ResultEpisode e) => MapperEpisode.episodeModelToEpisodeEntity(e)).toList();
 
@@ -65,7 +65,7 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
 
   @override
   Future<List<Location>> getLocation(int page) async{
-    final ModelLocation dataLocation = await DataSourceImpRickAndMorty()._response("location", {"queryParameter": "$page"}) as ModelLocation;
+    final ModelLocation dataLocation = await DataSourceImpRickAndMorty()._response("location", {"page": "$page"}) as ModelLocation;
     
     final List<Location> locations = dataLocation.results!.map((ResultLocation e) => MapperLocation.locationModelToLocationEntity(e)).toList();
     
