@@ -10,7 +10,7 @@ part 'characters_state.dart';
 class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   
 
-  CharactersBloc() : super(CharactersState()) {
+  CharactersBloc() : super(const CharactersState()) {
     on<InitCharacterBloc>((event, emit) async{
       final List<Character> characters = await DataSourceImpRickAndMorty().getCharacter(1);
       emit(state.copywith(characterList: characters));

@@ -13,11 +13,11 @@ class DetailCharacter extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     final List<Map<String, String>> items = [
-      {"title": "Status", "data": "${character.status.name}"},
+      {"title": "Status", "data": character.status.name},
       {"title": "Species", "data": character.species},
-      {"title": "Gender", "data": "${character.gender.name}"},
-      {"title": "Origin", "data": "${character.origin.name}"},
-      {"title": "Location", "data": "${character.location.name}"},
+      {"title": "Gender", "data": character.gender.name},
+      {"title": "Origin", "data": character.origin.name},
+      {"title": "Location", "data": character.location.name},
     ];
     return Scaffold(
       appBar: AppBar(

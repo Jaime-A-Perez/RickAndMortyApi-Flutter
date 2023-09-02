@@ -9,6 +9,7 @@ class PaginatonControls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = screenSize(context, typeSize: TypeSize.width, size: 1);
+     final theme = Theme.of(context);
     return  Positioned(
           bottom: width * 0.05,
           right:  width * 0.05,
@@ -17,11 +18,11 @@ class PaginatonControls extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Text("Next Page", 
-                  style: TextStyle(color:  Color.fromARGB(191, 12, 255, 49), 
+                  style: TextStyle(color: theme.shadowColor, 
                     backgroundColor: Colors.black.withOpacity(0.6),
                     fontWeight: FontWeight.w600
                     ),)),
-              FloatingActionButton(onPressed: onPressed, child: Icon(Icons.next_plan_sharp)),
+              FloatingActionButton(onPressed: onPressed, child: const Icon(Icons.next_plan_sharp)),
             ],
           )) ;
   }

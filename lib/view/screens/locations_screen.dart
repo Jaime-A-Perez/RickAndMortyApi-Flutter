@@ -3,16 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/blocs/bloc_location/location_bloc.dart';
 import 'package:rick_and_morty/view/screens/detail_location.dart';
 import 'package:rick_and_morty/view/widgets/card_location.dart';
+import 'package:rick_and_morty/view/widgets/custom_app_bar.dart';
 import 'package:rick_and_morty/view/widgets/pagination_controls.dart';
 
-class LocationsPage extends StatefulWidget {
-   LocationsPage({Key? key});
+class LocationsSreen extends StatefulWidget {
+   const LocationsSreen({Key? key});
 
   @override
-  State<LocationsPage> createState() => _LocationsPageState();
+  State<LocationsSreen> createState() => _LocationsSreenState();
 }
 
-class _LocationsPageState extends State<LocationsPage> {
+class _LocationsSreenState extends State<LocationsSreen> {
   final ScrollController scrollController = ScrollController();
   @override
   void initState() {
@@ -39,13 +40,7 @@ class _LocationsPageState extends State<LocationsPage> {
     final blocLocation = context.watch<LocationBloc>(); 
 
     return Scaffold(
-      appBar: AppBar(
-    centerTitle: true,
-    title: Text(
-      "Location",
-      style: textTheme.displaySmall,
-    ),
-      ),
+      appBar: CustomAppBar(textTheme: textTheme,titleAppBar: "Locations",),
       body: Stack(
     children: [
       Column(
@@ -80,7 +75,7 @@ class _LocationsPageState extends State<LocationsPage> {
             blocLocationrRead.add(IsRequeringData(false));
             });
           }):
-       Center(),
+       const Center(),
     ],
       ),
     );

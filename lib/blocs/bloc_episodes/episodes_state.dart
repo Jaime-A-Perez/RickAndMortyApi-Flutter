@@ -10,7 +10,7 @@ class EpisodesState extends Equatable{
   final bool? isRequeringData;
   final int? currentPage;
 
-  EpisodesState({this.episodesList, this.searchResult, this.queryParameters, this.isActiveSearch, this.characterInEpisode, this.isRequeringData = false, this.currentPage = 1});
+  const EpisodesState({this.episodesList, this.searchResult, this.queryParameters, this.isActiveSearch, this.characterInEpisode, this.isRequeringData = false, this.currentPage = 1});
  
  
 

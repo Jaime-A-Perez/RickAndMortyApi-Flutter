@@ -6,7 +6,7 @@ part 'bottom_bar_event.dart';
 part 'bottom_bar_state.dart';
 
 class BottomBarBloc extends Bloc<BottomBarEvent, BottomBarState> {
-  BottomBarBloc() : super(BottomBarState()) {
+  BottomBarBloc() : super(const BottomBarState()) {
     on<ChangeIndex>((event, emit) {
       emit(state.copywith(pageIndex: event.pageIndex));
     });

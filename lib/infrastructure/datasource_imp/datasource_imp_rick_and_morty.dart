@@ -20,13 +20,11 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
       path: '/api/$typeRequest',
       queryParameters: queryParameter 
     );
-
+    
     final response = await http.get(uri);
-
     if (response.statusCode < 200 || response.statusCode > 299) {
         throw Exception("Error code: ${response.statusCode}");
       }  
-
       switch (typeRequest) {
         case "character":
          final ModelCharacter model = modelCharacterFromJson(response.body);

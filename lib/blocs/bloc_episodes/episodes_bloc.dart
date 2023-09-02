@@ -10,7 +10,7 @@ part 'episodes_event.dart';
 part 'episodes_state.dart';
 
 class EpisodesBloc extends Bloc<EpisodesEvent, EpisodesState> {
-  EpisodesBloc() : super(EpisodesState()) {
+  EpisodesBloc() : super(const EpisodesState()) {
     on<InitEpisodesBloc>((event, emit) async{
       final List<Episode> episodes = await DataSourceImpRickAndMorty().getEpisode(1);
       emit(state.copywith(episodesList: episodes));

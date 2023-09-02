@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/blocs/bloc_episodes/episodes_bloc.dart';
-import 'package:rick_and_morty/blocs/bloc_location/location_bloc.dart';
 import 'package:rick_and_morty/domine/entities/epidode.dart';
-import 'package:rick_and_morty/domine/entities/location.dart';
 import 'package:rick_and_morty/utils/utils.dart';
 import 'package:rick_and_morty/view/widgets/location_info.dart';
 
 class DetailEpisode extends StatelessWidget {
   final Episode episode;
-  DetailEpisode({Key? key,  required this.episode}) : super(key: key);
+  const DetailEpisode({Key? key,  required this.episode}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> items = [
-      {"title": "Official Name", "data": "${episode.name}"},
-      {"title": "Launch Date", "data": "${episode.airDate}"},
-      {"title": "${formatSingleEpisode('S01E04')}", "data": ""},
+      {"title": "Official Name", "data": episode.name},
+      {"title": "Launch Date", "data": episode.airDate},
+      {"title": formatSingleEpisode(episode.episode), "data": ""},
     ];
     final width = screenSize(context, typeSize: TypeSize.width, size: 1);
     final textTheme = Theme.of(context).textTheme;
+     final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -69,8 +68,9 @@ class DetailEpisode extends StatelessWidget {
                           ),
                           Text(
                             state.characterInEpisode![index].name,
-                            style: TextStyle(color:  Color.fromRGBO(254, 39, 204, 1),),
+                            style: TextStyle(color:  theme.disabledColor,),
                             textAlign: TextAlign.center,
+                            maxLines: 2,
                           ),
                         ],
                       ),

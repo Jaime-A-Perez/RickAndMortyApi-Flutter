@@ -16,6 +16,8 @@ class CardCharacter extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = screenSize(context, typeSize: TypeSize.width, size: 1);
     final textTheme = Theme.of(context).textTheme;
+    final theme = Theme.of(context);
+
     return InkWell(
       splashColor: Colors.transparent,
       onTap: onTap,
@@ -50,7 +52,7 @@ class CardCharacter extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    statusLive(character.status),
+                    statusLive(character.status, theme),
                     Text(
                       character.status.name.toUpperCase(),
                       style: textTheme.bodyMedium,                      
@@ -66,13 +68,13 @@ class CardCharacter extends StatelessWidget {
   }
 }
 
-Icon statusLive(Status status) {
+Icon statusLive(Status status, ThemeData theme) {
   switch (status) {
     case Status.alive:
-      return Icon(Icons.sentiment_very_satisfied_outlined, color: Colors.green,);
+      return Icon(Icons.sentiment_very_satisfied_outlined, color: theme.shadowColor);
     case Status.dead:
-      return Icon(Icons.sentiment_very_dissatisfied_rounded, color: Colors.red,);
+      return Icon(Icons.sentiment_very_dissatisfied_rounded, color: theme.disabledColor,);
     default:
-      return Icon(Icons.question_mark_rounded);
+      return const Icon(Icons.question_mark_rounded);
   }
 }

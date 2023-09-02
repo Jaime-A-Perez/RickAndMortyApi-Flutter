@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/blocs/bloc_episodes/episodes_bloc.dart';
 import 'package:rick_and_morty/view/screens/detail_episode.dart';
 import 'package:rick_and_morty/view/widgets/card_episodes.dart';
+import 'package:rick_and_morty/view/widgets/custom_app_bar.dart';
 import 'package:rick_and_morty/view/widgets/pagination_controls.dart';
 
 class EpisodesPage extends StatefulWidget {
@@ -41,13 +42,7 @@ class _EpisodesPageState extends State<EpisodesPage> {
 
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          "Episodes",
-          style: textTheme.displaySmall,
-        ),
-      ),
+      appBar: CustomAppBar(textTheme: textTheme,titleAppBar: "Episodes",),
       body: Stack(
         children: [
           Column(
@@ -82,9 +77,10 @@ class _EpisodesPageState extends State<EpisodesPage> {
             blocLocationrRead.add(IsRequeringData(false));
             });
           }):
-       Center(),
+       const Center(),
         ],
       ),
     ));
   }
 }
+

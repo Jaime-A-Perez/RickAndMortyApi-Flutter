@@ -13,7 +13,8 @@ class ListTitleCustom extends StatelessWidget {
     final theme = Theme.of(context);
     return Row(
       children: [
-        Expanded(flex: 2, child: Text(title, style: theme.textTheme.titleLarge)),
+        Expanded(flex: 2, child: 
+        Text(title, style: theme.textTheme.titleLarge)),
         const Spacer(),
         Expanded(
           flex: 3,

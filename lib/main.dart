@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           theme: AppTheme().getTheme(),
           debugShowCheckedModeBanner: false,
-          title: 'Material App',
-          home: Home()),
+          title: 'Rick and Morty App',
+          home: const Home()),
     );
   }
 }

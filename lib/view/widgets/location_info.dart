@@ -28,7 +28,7 @@ class LocationInfo extends StatelessWidget {
               child: Icon(
                 Icons.circle,
                 size: 10,
-                color:  Color.fromARGB(191, 12, 255, 49),
+                color: theme.shadowColor,
               ),
             ),
             Text(

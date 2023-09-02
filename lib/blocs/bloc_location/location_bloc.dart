@@ -11,7 +11,7 @@ part 'location_event.dart';
 part 'location_state.dart';
 
 class LocationBloc extends Bloc<LocationEvent, LocationsState> {
-  LocationBloc() : super(LocationsState()) {
+  LocationBloc() : super(const LocationsState()) {
     on<InitLocationBloc>((event, emit) async{
       final List<Location> locations = await DataSourceImpRickAndMorty().getLocation(1);
       emit(state.copywith(locationsList: locations));

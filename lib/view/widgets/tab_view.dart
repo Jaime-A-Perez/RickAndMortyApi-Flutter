@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/blocs/bloc_bottom_bar/bottom_bar_bloc.dart';
-import 'package:rick_and_morty/utils/utils.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final List<String> titles;
@@ -17,8 +15,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
       required this.ontaps,
       });
 
+  @override
   Widget build(BuildContext context) {
-    final width = screenSize(context, typeSize: TypeSize.width, size: 1);
     final blocBottomBar = context.watch<BottomBarBloc>();
     return BottomNavigationBar(
         onTap: (value) {

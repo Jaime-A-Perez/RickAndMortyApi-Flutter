@@ -7,18 +7,18 @@ import 'package:rick_and_morty/view/widgets/location_info.dart';
 
 class DetailLocation extends StatelessWidget {
   final Location location;
-  DetailLocation({Key? key, required this.location}) : super(key: key);
+  const DetailLocation({Key? key, required this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> items = [
-      {"title": "Official Name", "data": "${location.name}"},
-      {"title": "Type", "data": "${location.type}"},
-      {"title": "Dimension", "data": "${location.dimension}"},
+      {"title": "Official Name", "data": location.name},
+      {"title": "Type", "data": location.type},
+      {"title": "Dimension", "data": location.dimension},
     ];
     final width = screenSize(context, typeSize: TypeSize.width, size: 1);
     final textTheme = Theme.of(context).textTheme;
-    final blocResidents = context.watch<LocationBloc>();
+     final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -68,8 +68,9 @@ class DetailLocation extends StatelessWidget {
                           ),
                           Text(
                             state.residents![index].name,
-                            style: TextStyle(color:  Color.fromRGBO(254, 39, 204, 1),),
+                            style: TextStyle(color: theme.disabledColor,),
                             textAlign: TextAlign.center,
+                            maxLines: 2,
                           ),
                         ],
                       ),
