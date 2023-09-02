@@ -15,6 +15,12 @@ class SearchEvent extends CharactersEvent {
   
 }
 
+class AddNextPageOfCharactersBloc extends CharactersEvent {
+ final int currentPage;
+
+  AddNextPageOfCharactersBloc(this.currentPage);
+}
+
 class IsRequeringData extends CharactersEvent {
   final bool isRequeringData;
 

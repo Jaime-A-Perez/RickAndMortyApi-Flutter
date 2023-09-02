@@ -6,9 +6,10 @@ class CharactersState extends Equatable{
   final String? queryParameters;
   final bool? isActiveSearch;
   final bool? isRequeringData;
-  
+  final int? currentPage;
 
-  CharactersState({this.characterList, this.searchResult, this.queryParameters, this.isActiveSearch,this.isRequeringData = false});
+
+  const CharactersState( {this.characterList, this.searchResult, this.queryParameters, this.isActiveSearch,this.isRequeringData = false, this.currentPage = 1});
 
   CharactersState copywith({
     List<Character>? characterList,
@@ -16,15 +17,17 @@ class CharactersState extends Equatable{
     String? queryParameters,
     bool? isActiveSearch,
     bool? isRequeringData,
+    int? currentPage
   }) => CharactersState(
     characterList: characterList ?? this.characterList,
     searchResult: searchResult,
     queryParameters: queryParameters ?? this.queryParameters,
     isActiveSearch:  isActiveSearch ?? this.isActiveSearch,
-    isRequeringData: isRequeringData ?? this.isRequeringData
+    isRequeringData: isRequeringData ?? this.isRequeringData,
+    currentPage: currentPage ?? this.currentPage
     ) ;
     
   @override
-  List<Object?> get props => [characterList, searchResult, queryParameters, isActiveSearch, isRequeringData];  
+  List<Object?> get props => [characterList, searchResult, queryParameters, isActiveSearch, isRequeringData, currentPage];  
 }
 
