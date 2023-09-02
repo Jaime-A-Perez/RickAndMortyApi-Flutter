@@ -4,6 +4,7 @@ import 'package:rick_and_morty/blocs/bloc_episodes/episodes_bloc.dart';
 import 'package:rick_and_morty/domine/entities/epidode.dart';
 import 'package:rick_and_morty/utils/utils.dart';
 import 'package:rick_and_morty/view/screens/detail_character_page.dart';
+import 'package:rick_and_morty/view/widgets/animations/animation_fade.dart';
 import 'package:rick_and_morty/view/widgets/location_info.dart';
 
 class DetailEpisode extends StatelessWidget {
@@ -57,29 +58,32 @@ class DetailEpisode extends StatelessWidget {
                       crossAxisCount: 3,
                       mainAxisExtent: width * 0.4),
                   itemBuilder: (context, index) {
-                    return ClipRRect(
-                      child: 
-                      InkWell(
-                        onTap: () {                          
-                        Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => DetailCharacter(character: state.characterInEpisode![index],)));
-                        },
-                        child: Column(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(38),
-                              child: Image.network(
-                                  state.characterInEpisode![index].image),
-                            ),
-                            Text(
-                              state.characterInEpisode![index].name,
-                              style: TextStyle(color:  theme.disabledColor,),
-                              textAlign: TextAlign.center,
-                              maxLines: 2,
-                            ),
-                          ],
+                    return FadeAnimation(
+                      fadeType: FadeType.fadeInRigth,
+                      child: InkWell(
+                         onTap: () {                          
+                          Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => DetailCharacter(character: state.characterInEpisode![index],)));
+                          },
+                        child: 
+                        ClipRRect(                       
+                          child: Column(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(38),
+                                child: Image.network(
+                                    state.characterInEpisode![index].image),
+                              ),
+                              Text(
+                                state.characterInEpisode![index].name,
+                                style: TextStyle(color:  theme.disabledColor,),
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );

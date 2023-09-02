@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/blocs/bloc_characters/characters_bloc.dart';
 import 'package:rick_and_morty/utils/utils.dart';
 import 'package:rick_and_morty/view/screens/detail_character_page.dart';
+import 'package:rick_and_morty/view/widgets/animations/animation_fade.dart';
 import 'package:rick_and_morty/view/widgets/card_character.dart';
 import 'package:rick_and_morty/view/widgets/custom_app_bar.dart';
 import 'package:rick_and_morty/view/widgets/pagination_controls.dart';
@@ -51,14 +52,16 @@ class _CharacterScreenState extends State<CharacterScreen> {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, mainAxisExtent: width * 0.65),
             itemBuilder: (context, index) {
-              return CardCharacter(
-                character: blocCharacter.state.characterList![index],
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => DetailCharacter(character: blocCharacter.state.characterList![index],)));
-                },
+              return FadeAnimation(
+                child: CardCharacter(
+                  character: blocCharacter.state.characterList![index],
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => DetailCharacter(character: blocCharacter.state.characterList![index],)));
+                  },
+                ),
               );
             },
           ),
