@@ -19,3 +19,15 @@ class AddResidents extends LocationEvent {
 
   AddResidents(this.listResidents);
 }
+
+class AddNextPageOfLocationBloc extends LocationEvent {
+ final int currentPage;
+
+  AddNextPageOfLocationBloc(this.currentPage);
+}
+
+class IsRequeringData extends LocationEvent {
+  final bool isRequeringData;
+
+  IsRequeringData(this.isRequeringData);
+}

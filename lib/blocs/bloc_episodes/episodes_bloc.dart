@@ -21,5 +21,14 @@ class EpisodesBloc extends Bloc<EpisodesEvent, EpisodesState> {
       final List<Character> characterInEpisode = await DataSourceImpRickAndMorty().getResidents(listIdResidents);
       emit(state.copywith(characterInEpisode: characterInEpisode));
     });
+
+    on<AddNextPageOfEpisodesBloc>((event, emit) async{
+      final List<Episode> episode = await DataSourceImpRickAndMorty().getEpisode(event.currentPage);
+      emit(state.copywith(episodesList: [...state.episodesList!, ...episode], currentPage: event.currentPage));
+    });
+    
+    on<IsRequeringData>((event, emit) async{                
+      emit(state.copywith(isRequeringData: event.isRequeringData));
+    });
   }
 }

@@ -22,5 +22,14 @@ class LocationBloc extends Bloc<LocationEvent, LocationsState> {
       final List<Character> residents = await DataSourceImpRickAndMorty().getResidents(listIdResidents);
       emit(state.copywith(residents: residents));
     });
+    
+    on<AddNextPageOfLocationBloc>((event, emit) async{
+      final List<Location> location = await DataSourceImpRickAndMorty().getLocation(event.currentPage);
+      emit(state.copywith(locationsList: [...state.locationsList!, ...location], currentPage: event.currentPage));
+    });
+    
+    on<IsRequeringData>((event, emit) async{                
+      emit(state.copywith(isRequeringData: event.isRequeringData));
+    });
   }
 }

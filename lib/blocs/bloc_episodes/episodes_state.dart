@@ -7,8 +7,10 @@ class EpisodesState extends Equatable{
   final String? queryParameters;
   final bool? isActiveSearch;
   final List<Character>? characterInEpisode;
+  final bool? isRequeringData;
+  final int? currentPage;
 
-  EpisodesState({this.episodesList, this.searchResult, this.queryParameters, this.isActiveSearch, this.characterInEpisode});
+  EpisodesState({this.episodesList, this.searchResult, this.queryParameters, this.isActiveSearch, this.characterInEpisode, this.isRequeringData = false, this.currentPage = 1});
  
  
 
@@ -17,15 +19,20 @@ class EpisodesState extends Equatable{
     Episode? searchResult,
     String? queryParameters,
     bool? isActiveSearch,
-    List<Character>? characterInEpisode
+    List<Character>? characterInEpisode,
+    bool? isRequeringData,
+    int? currentPage
   }) => EpisodesState(
     episodesList: episodesList ?? this.episodesList,
     searchResult: searchResult,
     queryParameters: queryParameters ?? this.queryParameters,
     isActiveSearch:  isActiveSearch ?? this.isActiveSearch,
-    characterInEpisode: characterInEpisode ?? this.characterInEpisode);
+    characterInEpisode: characterInEpisode ?? this.characterInEpisode,
+    isRequeringData: isRequeringData ?? this.isRequeringData,
+    currentPage: currentPage ?? this.currentPage
+    ) ;
     
       @override
-      List<Object?> get props => [episodesList, searchResult, queryParameters, isActiveSearch, characterInEpisode];
+      List<Object?> get props => [episodesList, searchResult, queryParameters, isActiveSearch, characterInEpisode,isRequeringData, currentPage];  
   
 }

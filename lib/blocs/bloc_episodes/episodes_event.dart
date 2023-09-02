@@ -19,3 +19,15 @@ class AddCharacterOfEpisodeEvent extends EpisodesEvent {
 
   AddCharacterOfEpisodeEvent(this.listCharactersOfEpisode);
 }
+
+class AddNextPageOfEpisodesBloc extends EpisodesEvent {
+ final int currentPage;
+
+  AddNextPageOfEpisodesBloc(this.currentPage);
+}
+
+class IsRequeringData extends EpisodesEvent {
+  final bool isRequeringData;
+
+  IsRequeringData(this.isRequeringData);
+}
