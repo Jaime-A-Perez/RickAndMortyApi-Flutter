@@ -1,16 +1,14 @@
-# rick_and_morty
+# Rick and Morty App
 
-A new Flutter project.
+# 🚀 Flutter Challenge with Rick and Morty API
 
-## Getting Started
+This project is a mobile application 📱 developed in Flutter that consumes data from the famous TV series Rick and Morty 🛸 through the [Rick and Morty API](https://rickandmortyapi.com/).
+___
 
-This project is a starting point for a Flutter application.
+# Rick and Morty App
 
-A few resources to get you started if this is your first Flutter project:
+# 🚀 Desafío Flutter con la API de Rick y Morty
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Este proyecto es una aplicación móvil 📱 desarrollada en Flutter que consume datos de la famosa serie de televisión Rick and Morty 🛸 a través de la [API de Rick and Morty](https://rickandmortyapi.com/).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
