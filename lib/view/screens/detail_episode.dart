@@ -16,7 +16,7 @@ class DetailEpisode extends StatelessWidget {
     final List<Map<String, String>> items = [
       {"title": "Official Name", "data": "${episode.name}"},
       {"title": "Launch Date", "data": "${episode.airDate}"},
-      {"title": "Episode", "data": "${episode.episode}"},
+      {"title": "${formatSingleEpisode('S01E04')}", "data": ""},
     ];
     final width = screenSize(context, typeSize: TypeSize.width, size: 1);
     final textTheme = Theme.of(context).textTheme;
