@@ -14,3 +14,9 @@ class AddNewItems extends CharactersEvent {
 class SearchEvent extends CharactersEvent {
   
 }
+
+class IsRequeringData extends CharactersEvent {
+  final bool isRequeringData;
+
+  IsRequeringData(this.isRequeringData);
+}
