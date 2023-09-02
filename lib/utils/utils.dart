@@ -45,3 +45,17 @@ List<int> extractIdsFromUrls(List<String> urls) {
   }
   return extractedIds;
 }
+// Method to extact Season and Episode
+String formatSingleEpisode(String episode) {
+  RegExp exp = RegExp(
+      r'S(\d+)E(\d+)'); 
+ // Regular expression to capture Season and Episode parts
+  var match = exp.firstMatch(episode);
+  if (match != null) {
+    String season = match.group(1)!;
+    String episodeNumber = match.group(2)!;
+    return 'Season: $season  Episode: $episodeNumber';
+  } else {
+    return 'Formato inválido';
+  }
+}
