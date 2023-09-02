@@ -4,6 +4,7 @@ import 'package:rick_and_morty/blocs/bloc_characters/characters_bloc.dart';
 import 'package:rick_and_morty/utils/utils.dart';
 import 'package:rick_and_morty/view/screens/detail_character_page.dart';
 import 'package:rick_and_morty/view/widgets/card_character.dart';
+import 'package:rick_and_morty/view/widgets/pagination_controls.dart';
 
 class CharacterPage extends StatefulWidget {
   CharacterPage({super.key});
@@ -57,21 +58,14 @@ class _CharacterPageState extends State<CharacterPage> {
           },
         ),
         blocCharacter.state.isRequeringData! ?          
-        Positioned(
-          bottom: width * 0.05,
-          right:  width * 0.05,
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Text("Next Page", 
-                  style: TextStyle(color:  Color.fromARGB(191, 12, 255, 49), 
-                    backgroundColor: Colors.black.withOpacity(0.6),
-                    fontWeight: FontWeight.w600
-                    ),)),
-              FloatingActionButton(onPressed: (){}, child: Icon(Icons.next_plan_sharp)),
-            ],
-          )) :
+          PaginatonControls(onPressed:  ()async{
+                final blocCharacterRead = context.read<CharactersBloc>();
+                blocCharacterRead.add(AddNextPageOfCharactersBloc(blocCharacterRead.state.currentPage! + 1));
+                await Future.delayed(const Duration(milliseconds: 600),(){
+                  scrollController.jumpTo(scrollController.position.pixels + 80);
+                blocCharacterRead.add(IsRequeringData(false));
+                });
+              }):
            Center(),
       ],
     );

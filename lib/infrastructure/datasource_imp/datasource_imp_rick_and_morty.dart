@@ -47,7 +47,7 @@ class DataSourceImpRickAndMorty extends DataSourceRickAndMorty {
   @override
   Future<List<Character>> getCharacter(int page) async{
     // Query and data modeling
-    final ModelCharacter dataCharacter = await DataSourceImpRickAndMorty()._response("character", {"queryParameter": "$page"}) as ModelCharacter;
+    final ModelCharacter dataCharacter = await DataSourceImpRickAndMorty()._response("character", {"page": "$page"}) as ModelCharacter;
     // Mapping of the result to the entity
     final List<Character> characters = dataCharacter.results!.map((ResultCharacter e) => MapperCharacter.characterModelToCharacterEntity(e)).toList();
     // retunr list of entities Characters
