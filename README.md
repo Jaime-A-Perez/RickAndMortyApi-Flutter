@@ -16,7 +16,7 @@ This project is a mobile application 📱 developed in Flutter that consumes dat
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/rick-and-morty-app.git
+git clone https://github.com/Jaime-A-Perez/RickAndMortyApi-Flutter
 
 # Navigate to the directory
 cd rick-and-morty-app
